@@ -1,0 +1,1595 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ريد شارك — شريك النمو الاستراتيجي</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #E8191A;
+    --red-dark: #B01010;
+    --red-glow: rgba(232, 25, 26, 0.25);
+    --black: #080808;
+    --black-2: #0f0f0f;
+    --black-3: #161616;
+    --black-4: #1e1e1e;
+    --white: #FFFFFF;
+    --white-80: rgba(255,255,255,0.8);
+    --white-50: rgba(255,255,255,0.5);
+    --white-20: rgba(255,255,255,0.2);
+    --white-08: rgba(255,255,255,0.08);
+    --white-04: rgba(255,255,255,0.04);
+    --border: rgba(255,255,255,0.1);
+    --border-red: rgba(232, 25, 26, 0.3);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
+    background: var(--black);
+    color: var(--white);
+    overflow-x: hidden;
+    direction: rtl;
+  }
+
+  /* SHARK FIN SVG PATTERN */
+  .fin-pattern {
+    position: absolute;
+    opacity: 0.03;
+    pointer-events: none;
+  }
+
+  /* ===== NAVBAR ===== */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 20px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(8,8,8,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .nav-logo svg {
+    width: 36px;
+    height: 36px;
+  }
+
+  .nav-logo-text {
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: 2px;
+    color: var(--white);
+  }
+
+  .nav-logo-text span { color: var(--red); }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--white-50);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.3s;
+    letter-spacing: 0.5px;
+  }
+
+  .nav-links a:hover { color: var(--white); }
+
+  .nav-cta {
+    background: var(--red);
+    color: var(--white) !important;
+    padding: 10px 24px;
+    border-radius: 4px;
+    font-weight: 700 !important;
+    transition: background 0.3s, transform 0.2s !important;
+  }
+
+  .nav-cta:hover {
+    background: var(--red-dark) !important;
+    transform: translateY(-1px);
+    color: var(--white) !important;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 120px 60px 80px;
+    text-align: center;
+  }
+
+  /* Animated shark fin background */
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 20% 50%, rgba(232,25,26,0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 80% 20%, rgba(232,25,26,0.05) 0%, transparent 60%);
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+  }
+
+  /* Large fin watermark */
+  .hero-fin-bg {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    opacity: 0.03;
+    animation: float 8s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translate(-50%, -50%) rotate(-2deg); }
+    50% { transform: translate(-50%, -52%) rotate(2deg); }
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--white-04);
+    border: 1px solid var(--border-red);
+    border-radius: 100px;
+    padding: 6px 16px 6px 10px;
+    margin-bottom: 32px;
+    font-size: 13px;
+    color: var(--white-80);
+    font-weight: 500;
+    animation: fadeDown 0.8s ease both;
+  }
+
+  .hero-badge-dot {
+    width: 8px; height: 8px;
+    background: var(--red);
+    border-radius: 50%;
+    animation: pulse-dot 2s ease infinite;
+  }
+
+  @keyframes pulse-dot {
+    0%, 100% { box-shadow: 0 0 0 0 var(--red-glow); }
+    50% { box-shadow: 0 0 0 6px transparent; }
+  }
+
+  .hero-title {
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
+    font-size: clamp(44px, 6vw, 80px);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 24px;
+    animation: fadeUp 0.9s ease 0.1s both;
+    text-align: center;
+  }
+
+  .hero-title .accent { color: var(--red); }
+
+  .hero-sub {
+    font-size: 18px;
+    line-height: 1.8;
+    color: var(--white-50);
+    max-width: 580px;
+    margin-bottom: 44px;
+    font-weight: 400;
+    animation: fadeUp 0.9s ease 0.2s both;
+    text-align: center;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    animation: fadeUp 0.9s ease 0.3s both;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--red);
+    color: var(--white);
+    padding: 16px 32px;
+    border-radius: 4px;
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    transition: left 0.5s;
+  }
+
+  .btn-primary:hover::before { left: 100%; }
+  .btn-primary:hover { background: var(--red-dark); transform: translateY(-2px); box-shadow: 0 8px 30px var(--red-glow); }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: transparent;
+    color: var(--white-80);
+    padding: 16px 32px;
+    border-radius: 4px;
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .btn-secondary:hover { border-color: var(--white-50); color: var(--white); }
+
+  /* Stats strip */
+  .hero-stats {
+    margin-top: 70px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    animation: fadeUp 0.9s ease 0.5s both;
+    width: 100%;
+  }
+
+  .stat-item {
+    padding: 24px 28px;
+    border-left: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stat-item:last-child { border-left: none; }
+
+  .stat-item::before {
+    content: '';
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 3px; height: 0;
+    background: var(--red);
+    transition: height 0.5s;
+  }
+
+  .stat-item:hover::before { height: 100%; }
+
+  .stat-num {
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
+    font-size: 36px;
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-num span { color: var(--red); }
+
+  .stat-label {
+    font-size: 13px;
+    color: var(--white-50);
+    font-weight: 400;
+    line-height: 1.4;
+  }
+
+  /* ===== PAIN SECTION ===== */
+  .pain-section {
+    padding: 100px 60px;
+    position: relative;
+    background: var(--black-2);
+    overflow: hidden;
+  }
+
+  .pain-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--red), transparent);
+  }
+
+  .section-tag {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--red);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .section-tag::before,
+  .section-tag::after {
+    content: '';
+    width: 24px; height: 2px;
+    background: var(--red);
+  }
+
+  .section-title {
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+  .section-sub {
+    font-size: 16px;
+    color: var(--white-50);
+    max-width: 560px;
+    line-height: 1.8;
+    margin-bottom: 56px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .pain-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .pain-card {
+    background: var(--black-2);
+    padding: 36px 40px;
+    position: relative;
+    transition: background 0.3s;
+  }
+
+  .pain-card:hover { background: var(--black-3); }
+
+  .pain-icon {
+    font-size: 32px;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .pain-title {
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--white);
+  }
+
+  .pain-desc {
+    font-size: 14px;
+    color: var(--white-50);
+    line-height: 1.7;
+  }
+
+  .pain-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 0; height: 2px;
+    background: var(--red);
+    transition: width 0.4s;
+  }
+
+  .pain-card:hover::after { width: 100%; }
+
+  /* ===== WHO WE ARE ===== */
+  .about-section {
+    padding: 100px 60px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-visual {
+    position: relative;
+  }
+
+  .about-box-main {
+    background: var(--black-3);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-box-main::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 4px; height: 60px;
+    background: var(--red);
+    border-radius: 0 0 0 4px;
+  }
+
+  .quote-text {
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.5;
+    color: var(--white);
+    margin-bottom: 32px;
+  }
+
+  .quote-text span { color: var(--red); }
+
+  .founder-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .founder-card {
+    background: var(--black-4);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 16px;
+    text-align: center;
+  }
+
+  .founder-avatar {
+    width: 48px; height: 48px;
+    background: var(--red);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 10px;
+    font-size: 20px;
+  }
+
+  .founder-role {
+    font-size: 11px;
+    color: var(--red);
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .about-content .section-tag {
+    justify-content: flex-start;
+  }
+  .about-content .section-tag::before { display: none; }
+  .about-content .section-tag::after { display: none; }
+  .about-content .section-title { text-align: right; }
+  .about-content .section-sub { text-align: right; margin-right: 0; }
+
+  .feature-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 32px;
+  }
+
+  .feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px 24px;
+    background: var(--white-04);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    transition: border-color 0.3s;
+  }
+
+  .feature-item:hover { border-color: var(--border-red); }
+
+  .feature-icon {
+    width: 40px; height: 40px;
+    background: rgba(232,25,26,0.1);
+    border: 1px solid var(--border-red);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .feature-text h4 {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .feature-text p {
+    font-size: 13px;
+    color: var(--white-50);
+    line-height: 1.6;
+  }
+
+  /* ===== SERVICES ===== */
+  .services-section {
+    padding: 100px 60px;
+    background: var(--black-2);
+    position: relative;
+  }
+
+  .services-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--red), transparent);
+  }
+
+  .services-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 56px;
+    gap: 24px;
+    text-align: center;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .service-card {
+    background: var(--black-2);
+    padding: 40px 36px;
+    position: relative;
+    transition: all 0.3s;
+    cursor: default;
+    overflow: hidden;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 0; height: 3px;
+    background: var(--red);
+    transition: width 0.4s;
+  }
+
+  .service-card:hover { background: var(--black-3); }
+  .service-card:hover::before { width: 100%; }
+
+  .service-num {
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
+    font-size: 48px;
+    font-weight: 900;
+    color: var(--white-08);
+    line-height: 1;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .service-icon {
+    font-size: 28px;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .service-title {
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+
+  .service-desc {
+    font-size: 14px;
+    color: var(--white-50);
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+
+  .service-tag {
+    display: inline-block;
+    background: rgba(232,25,26,0.1);
+    border: 1px solid var(--border-red);
+    color: var(--red);
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  /* Large featured service */
+  .service-card.featured {
+    grid-column: span 2;
+    background: var(--black-3);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+
+  .service-card.featured:hover { background: var(--black-4); }
+
+  .featured-visual {
+    background: var(--black-4);
+    border: 1px solid var(--border-red);
+    border-radius: 8px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .metric-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .metric-label { font-size: 13px; color: var(--white-50); }
+
+  .metric-bar-wrap {
+    flex: 1;
+    margin: 0 16px;
+    height: 4px;
+    background: var(--white-08);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .metric-bar {
+    height: 100%;
+    background: var(--red);
+    border-radius: 2px;
+    animation: growBar 1.5s ease both;
+  }
+
+  @keyframes growBar {
+    from { width: 0; }
+  }
+
+  .metric-val { font-size: 13px; font-weight: 700; color: var(--white); }
+
+  /* ===== WHY GROW ===== */
+  .grow-section {
+    padding: 100px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .grow-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 56px;
+  }
+
+  .grow-card {
+    background: var(--white-04);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 32px 28px;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .grow-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 120%, rgba(232,25,26,0.08) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .grow-card:hover { border-color: var(--border-red); transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+  .grow-card:hover::after { opacity: 1; }
+
+  .grow-icon {
+    font-size: 36px;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .grow-title {
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
+    font-size: 19px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  .grow-desc {
+    font-size: 14px;
+    color: var(--white-50);
+    line-height: 1.7;
+  }
+
+  /* ===== SAUDI SECTION ===== */
+  .saudi-section {
+    padding: 100px 60px;
+    background: var(--black-2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .saudi-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--red), transparent);
+  }
+
+  .saudi-inner {
+    background: var(--black-3);
+    border: 1px solid var(--border-red);
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .saudi-inner::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 50%;
+    height: 100%;
+    background: radial-gradient(ellipse at 80% 50%, rgba(232,25,26,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .saudi-top {
+    padding: 56px 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+    border-bottom: 1px solid var(--border);
+    text-align: center;
+  }
+
+  .saudi-flag-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(0,100,0,0.1);
+    border: 1px solid rgba(0,150,0,0.2);
+    padding: 8px 18px;
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .saudi-title {
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .saudi-desc {
+    font-size: 15px;
+    color: var(--white-50);
+    line-height: 1.8;
+    margin-bottom: 32px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .saudi-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    background: var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    width: 100%;
+  }
+
+  .saudi-stat {
+    background: var(--black-4);
+    padding: 24px 28px;
+  }
+
+  .saudi-stat-icon {
+    font-size: 24px;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .saudi-stat-title {
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .saudi-stat-desc {
+    font-size: 13px;
+    color: var(--white-50);
+    line-height: 1.5;
+  }
+
+  .saudi-bottom {
+    padding: 40px 60px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+  }
+
+  .saudi-check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 24px 16px 0;
+    border-left: 1px solid var(--border);
+  }
+
+  .saudi-check-item:first-child { border-left: none; padding-right: 0; padding-left: 24px; }
+  .saudi-check-item:nth-child(2) { padding-right: 24px; padding-left: 24px; }
+
+  .check-icon {
+    width: 28px; height: 28px;
+    background: rgba(232,25,26,0.1);
+    border: 1px solid var(--border-red);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--red);
+    font-size: 12px;
+    margin-top: 2px;
+  }
+
+  .check-text h5 {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .check-text p {
+    font-size: 13px;
+    color: var(--white-50);
+    line-height: 1.5;
+  }
+
+  /* ===== HOW IT WORKS ===== */
+  .how-section {
+    padding: 100px 60px;
+    position: relative;
+  }
+
+  .steps-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 56px;
+    position: relative;
+  }
+
+  .step-card {
+    background: var(--black);
+    padding: 48px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .step-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%; height: 3px;
+    background: linear-gradient(90deg, var(--red), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .step-card:hover::after { opacity: 1; }
+
+  .step-num {
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
+    font-size: 72px;
+    font-weight: 900;
+    color: var(--white-04);
+    line-height: 1;
+    position: absolute;
+    top: 20px;
+    left: 30px;
+  }
+
+  .step-icon {
+    font-size: 36px;
+    margin-bottom: 24px;
+    display: block;
+    position: relative;
+    z-index: 1;
+  }
+
+  .step-title {
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .step-desc {
+    font-size: 14px;
+    color: var(--white-50);
+    line-height: 1.7;
+    position: relative;
+    z-index: 1;
+  }
+
+  .step-connector {
+    display: none;
+  }
+
+  /* ===== FINAL CTA ===== */
+  .cta-section {
+    padding: 100px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background: var(--black-2);
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--red), transparent);
+  }
+
+  .cta-bg-fin {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    opacity: 0.03;
+    pointer-events: none;
+  }
+
+  .cta-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .cta-title {
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 900;
+    line-height: 1.15;
+    margin-bottom: 20px;
+  }
+
+  .cta-title span { color: var(--red); }
+
+  .cta-sub {
+    font-size: 17px;
+    color: var(--white-50);
+    line-height: 1.7;
+    margin-bottom: 44px;
+  }
+
+  .cta-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: transparent;
+    color: var(--white-80);
+    padding: 16px 32px;
+    border-radius: 4px;
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid rgba(37,211,102,0.3);
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .btn-whatsapp:hover { background: rgba(37,211,102,0.08); border-color: rgba(37,211,102,0.5); }
+
+  /* ===== FOOTER ===== */
+  footer {
+    padding: 48px 60px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .footer-copy {
+    font-size: 14px;
+    color: var(--white-50);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+  }
+
+  .footer-links a {
+    font-size: 13px;
+    color: var(--white-50);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .footer-links a:hover { color: var(--white); }
+
+  /* ===== ANIMATIONS ===== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--black); }
+  ::-webkit-scrollbar-thumb { background: var(--red-dark); border-radius: 3px; }
+
+  .how-section,
+  .grow-section {
+    text-align: center;
+  }
+
+  .red-line {
+    display: inline-block;
+    width: 40px; height: 3px;
+    background: var(--red);
+    vertical-align: middle;
+    margin-left: 12px;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-logo">
+    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M8 32 C8 32, 14 28, 20 16 C24 8, 28 6, 28 6 C28 6, 26 12, 22 18 C18 24, 14 28, 8 32Z" fill="#E8191A"/>
+      <path d="M20 16 C24 8, 28 6, 28 6 C30 14, 26 22, 20 28 C20 28, 20 22, 20 16Z" fill="#B01010"/>
+    </svg>
+    <span class="nav-logo-text">RED <span>SHARK</span></span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">من نحن</a></li>
+    <li><a href="#services">الخدمات</a></li>
+    <li><a href="#saudi">السوق السعودي</a></li>
+    <li><a href="#how">كيف نعمل</a></li>
+    <li><a href="#cta" class="nav-cta">استشارة مجانية</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+
+  <!-- Large fin watermark -->
+  <svg class="hero-fin-bg" viewBox="0 0 400 400" fill="none">
+    <path d="M50 380 C50 380, 120 320, 180 200 C220 120, 280 60, 280 60 C280 60, 260 130, 220 200 C180 270, 130 330, 50 380Z" fill="white"/>
+    <path d="M180 200 C220 120, 280 60, 280 60 C310 150, 280 260, 200 320 C200 320, 190 270, 180 200Z" fill="white"/>
+  </svg>
+
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="hero-badge-dot"></span>
+      شريك النمو الاستراتيجي
+    </div>
+
+    <h1 class="hero-title">
+      شركتك تستحق<br>
+      أن <span class="accent">تنمو</span><br>
+      نحن نجعل ذلك يحدث
+    </h1>
+
+    <p class="hero-sub">
+      ريد شارك شريكك الاستراتيجي للنمو الحقيقي. بخبرة تتجاوز ١٠ سنوات في الأسواق الناشئة، نمشي معك من أولى الخطوات حتى تحقيق أهدافك.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#cta" class="btn-primary">
+        ابدأ رحلة النمو الآن
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#services" class="btn-secondary">
+        تعرف على خدماتنا
+      </a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">+<span>10</span></div>
+        <div class="stat-label">سنوات خبرة<br>في الأسواق الناشئة</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">+<span>50</span></div>
+        <div class="stat-label">شركة تأسست<br>بنجاح معنا</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num"><span>3</span></div>
+        <div class="stat-label">أسواق<br>حضور فعلي ونشط</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num"><span>24</span>h</div>
+        <div class="stat-label">الحد الأقصى<br>للرد على استفساراتك</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAIN SECTION -->
+<section class="pain-section">
+  <div class="section-tag">التحديات</div>
+  <h2 class="section-title">شركتك تملك طاقة أكبر مما تظن<br>— فما الذي يُعيقها؟</h2>
+  <p class="section-sub">كثير من الشركات تصل إلى مرحلة معينة وتشعر بأن هناك ما يحول دون النمو. رأينا هذا كثيراً — ولدينا الحل.</p>
+
+  <div class="pain-grid reveal">
+    <div class="pain-card">
+      <span class="pain-icon">🌐</span>
+      <div class="pain-title">السوق الحالي محدود</div>
+      <div class="pain-desc">تعلم أن الفرص الأكبر موجودة في مكان آخر، لكن الطريق إليها غير واضح ومحفوف بالمخاطر.</div>
+    </div>
+    <div class="pain-card">
+      <span class="pain-icon">💸</span>
+      <div class="pain-title">تكلفة التوسع مرتفعة</div>
+      <div class="pain-desc">المخاطرة بمبالغ كبيرة بدون ضمان نجاح أمر مقلق، وقد يُعيق اتخاذ القرار الصحيح.</div>
+    </div>
+    <div class="pain-card">
+      <span class="pain-icon">🤝</span>
+      <div class="pain-title">غياب الشبكة الصحيحة</div>
+      <div class="pain-desc">في الأسواق الجديدة، الكونكشن أهم من رأس المال. بدون الشركاء الصح، الطريق يصبح أطول وأصعب.</div>
+    </div>
+    <div class="pain-card">
+      <span class="pain-icon">🧭</span>
+      <div class="pain-title">دخلت من قبل ولم تنجح</div>
+      <div class="pain-desc">الفشل في السابق لم يكن بسبب شركتك — كان لأنك دخلت وحدك بدون دليل يعرف السوق جيداً.</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO WE ARE -->
+<section class="about-section" id="about">
+  <div class="about-visual reveal">
+    <div class="about-box-main">
+      <div class="quote-text">
+        "لسنا مجرد مستشارين —<br>نحن <span>شركاء نجاحك</span><br>الفعلي على أرض الواقع"
+      </div>
+      <p style="font-size:14px; color: var(--white-50); line-height:1.7; margin-bottom:32px;">
+        ريد شارك ليست شركة استشارات تقليدية. نحن فريق من رجال الأعمال والمؤسسين الذين يمتلكون تجارب حقيقية في بناء شركات وتوسيعها في أسواق متعددة.
+      </p>
+      <div class="founder-cards">
+        <div class="founder-card">
+          <div class="founder-avatar">👔</div>
+          <div class="founder-role">مؤسس</div>
+        </div>
+        <div class="founder-card">
+          <div class="founder-avatar">💼</div>
+          <div class="founder-role">شريك</div>
+        </div>
+        <div class="founder-card">
+          <div class="founder-avatar">📊</div>
+          <div class="founder-role">خبير</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="about-content reveal">
+    <div class="section-tag">من نحن</div>
+    <h2 class="section-title">نتحدث لغة<br>الأعمال الحقيقية</h2>
+    <p class="section-sub">نعمل جنباً إلى جنب مع عملائنا — لا نكتفي بإخبارهم بما يجب فعله، بل ننفذ معهم خطوة بخطوة.</p>
+
+    <div class="feature-list">
+      <div class="feature-item">
+        <div class="feature-icon">🎯</div>
+        <div class="feature-text">
+          <h4>خطة مخصصة لشركتك</h4>
+          <p>ليست قالباً جاهزاً — بل استراتيجية مصممة لواقعك وأهدافك تحديداً.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">⚡</div>
+        <div class="feature-text">
+          <h4>نبدأ من التسريع إلى النمو</h4>
+          <p>لا نبدأ من الصفر — نستثمر ما بنيته ونضاعف أثره في السوق الجديد.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">📈</div>
+        <div class="feature-text">
+          <h4>تقارير أداء فورية</h4>
+          <p>تعرف بدقة أين أنت الآن وإلى أين تتجه في كل مرحلة.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services-section" id="services">
+  <div class="services-header">
+    <div class="section-tag">الخدمات</div>
+    <h2 class="section-title">خدماتنا مصممة لشركة<br>تسعى إلى النمو الذكي</h2>
+    <a href="#cta" class="btn-primary">ابدأ الآن</a>
+  </div>
+
+  <div class="services-grid reveal">
+    <!-- Featured card -->
+    <div class="service-card featured">
+      <div>
+        <span class="service-num">01</span>
+        <span class="service-icon">📊</span>
+        <div class="service-title">نمو المبيعات</div>
+        <div class="service-desc">نبني لك استراتيجية مبيعات مخصصة بناءً على سوقك وجمهورك المستهدف — مع فريق جاهز للتنفيذ على أرض الواقع.</div>
+        <span class="service-tag">الأكثر طلباً</span>
+      </div>
+      <div class="featured-visual">
+        <div class="metric-row">
+          <span class="metric-label">المبيعات</span>
+          <div class="metric-bar-wrap"><div class="metric-bar" style="width:85%"></div></div>
+          <span class="metric-val">+85%</span>
+        </div>
+        <div class="metric-row">
+          <span class="metric-label">العملاء</span>
+          <div class="metric-bar-wrap"><div class="metric-bar" style="width:72%"></div></div>
+          <span class="metric-val">+72%</span>
+        </div>
+        <div class="metric-row">
+          <span class="metric-label">الإيرادات</span>
+          <div class="metric-bar-wrap"><div class="metric-bar" style="width:91%"></div></div>
+          <span class="metric-val">+91%</span>
+        </div>
+        <div class="metric-row">
+          <span class="metric-label">النمو</span>
+          <div class="metric-bar-wrap"><div class="metric-bar" style="width:78%"></div></div>
+          <span class="metric-val">+78%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <span class="service-num">02</span>
+      <span class="service-icon">🏢</span>
+      <div class="service-title">تأسيس الشركات</div>
+      <div class="service-desc">ندير العملية بالكامل من التأسيس القانوني إلى الهيكل التشغيلي الصحيح منذ اليوم الأول.</div>
+      <span class="service-tag">تأسيس قانوني</span>
+    </div>
+
+    <div class="service-card">
+      <span class="service-num">03</span>
+      <span class="service-icon">💼</span>
+      <div class="service-title">الاستثمار والشراكات</div>
+      <div class="service-desc">نربطك بالمستثمرين والشركاء المناسبين الذين يضيفون قيمة حقيقية — وليس مجرد تمويل.</div>
+      <span class="service-tag">شراكات استراتيجية</span>
+    </div>
+
+    <div class="service-card">
+      <span class="service-num">04</span>
+      <span class="service-icon">👥</span>
+      <div class="service-title">بناء الفريق</div>
+      <div class="service-desc">نساعدك في بناء الفريق المناسب في السوق الجديد بكفاءة عالية وتكلفة معقولة.</div>
+      <span class="service-tag">موارد بشرية</span>
+    </div>
+  </div>
+</section>
+
+<!-- WHY GROW -->
+<section class="grow-section">
+  <div class="section-tag">لماذا النمو</div>
+  <h2 class="section-title">السوق يتغير — من يتحرك اليوم<br>هو من يفوز غداً</h2>
+
+  <div class="grow-grid reveal">
+    <div class="grow-card">
+      <span class="grow-icon">🌍</span>
+      <div class="grow-title">أسواق جديدة = عملاء جدد</div>
+      <div class="grow-desc">قاعدة عملاء أوسع تعني إيرادات أعلى واستقراراً أكبر على المدى البعيد.</div>
+    </div>
+    <div class="grow-card">
+      <span class="grow-icon">💹</span>
+      <div class="grow-title">قيمتك السوقية ترتفع</div>
+      <div class="grow-desc">الشركة التي تتوسع تساوي أكثر بكثير في أي جولة استثمارية مستقبلية.</div>
+    </div>
+    <div class="grow-card">
+      <span class="grow-icon">🔒</span>
+      <div class="grow-title">حماية حقيقية من المخاطر</div>
+      <div class="grow-desc">التنويع الجغرافي يحميك إذا تأثر سوقك الأساسي بأي ظروف غير متوقعة.</div>
+    </div>
+    <div class="grow-card">
+      <span class="grow-icon">🚀</span>
+      <div class="grow-title">الفرص لا تنتظر</div>
+      <div class="grow-desc">المنافسون يتحركون بالفعل، والمساحة في كل سوق محدودة لمن يتحرك أولاً.</div>
+    </div>
+    <div class="grow-card">
+      <span class="grow-icon">🤝</span>
+      <div class="grow-title">شراكات أقوى وأعمق</div>
+      <div class="grow-desc">التوسع يفتح أبواباً لشراكات استراتيجية كانت مستحيلة قبل الحضور في السوق الجديد.</div>
+    </div>
+    <div class="grow-card">
+      <span class="grow-icon">🏆</span>
+      <div class="grow-title">علامة تجارية أقوى</div>
+      <div class="grow-desc">الحضور في أسواق متعددة يبني سمعة راسخة ومصداقية لا تُقدَّر بثمن.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SAUDI SECTION -->
+<section class="saudi-section" id="saudi">
+  <div class="section-tag">السوق السعودي</div>
+  <h2 class="section-title" style="margin-bottom:48px;">هل شركتك جاهزة للسوق السعودي؟<br>— نحن الجسر الذي يصلك به</h2>
+
+  <div class="saudi-inner reveal">
+    <div class="saudi-top">
+      <div>
+        <div class="saudi-flag-badge">
+          🇸🇦 فرصة استراتيجية كبرى
+        </div>
+        <h3 class="saudi-title">مؤسسون بخبرة عملية<br>وحضور فعلي داخل<br>المملكة منذ <span style="color:var(--red)">+10 سنوات</span></h3>
+        <p class="saudi-desc">ريد شارك يمتلك ميزة تنافسية لا يملكها غيره: فريق يفهم لغة السوق السعودي وقوانينه وثقافته من الداخل.</p>
+        <a href="#cta" class="btn-primary">تواصل معنا الآن</a>
+      </div>
+
+      <div class="saudi-stats-grid">
+        <div class="saudi-stat">
+          <span class="saudi-stat-icon">🏦</span>
+          <div class="saudi-stat-title">بيئة استثمار عالمية</div>
+          <div class="saudi-stat-desc">رؤية 2030 فتحت قطاعات ضخمة أمام المستثمرين من جميع أنحاء العالم.</div>
+        </div>
+        <div class="saudi-stat">
+          <span class="saudi-stat-icon">💰</span>
+          <div class="saudi-stat-title">قوة شرائية مرتفعة</div>
+          <div class="saudi-stat-desc">من أعلى الأسواق إنفاقاً في المنطقة العربية بأكملها.</div>
+        </div>
+        <div class="saudi-stat">
+          <span class="saudi-stat-icon">📊</span>
+          <div class="saudi-stat-title">قاعدة مستثمرين واسعة</div>
+          <div class="saudi-stat-desc">من أكبر قواعد المستثمرين في العالم العربي وتنمو باستمرار.</div>
+        </div>
+        <div class="saudi-stat">
+          <span class="saudi-stat-icon">🔗</span>
+          <div class="saudi-stat-title">تسهيل جولات التمويل</div>
+          <div class="saudi-stat-desc">الوجود في السعودية يفتح أبواب التمويل للمراحل القادمة.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="saudi-bottom">
+      <div class="saudi-check-item">
+        <div class="check-icon">✓</div>
+        <div class="check-text">
+          <h5>خبرة قانونية محلية</h5>
+          <p>نتحدث لغة السوق السعودي ونفهم قوانينه بعمق</p>
+        </div>
+      </div>
+      <div class="saudi-check-item">
+        <div class="check-icon">✓</div>
+        <div class="check-text">
+          <h5>تجارب ناجحة فعلية</h5>
+          <p>عشرات الشركات التي أسسناها بنجاح داخل المملكة</p>
+        </div>
+      </div>
+      <div class="saudi-check-item">
+        <div class="check-icon">✓</div>
+        <div class="check-text">
+          <h5>توفير تكاليف الدخول</h5>
+          <p>نوفر عليك تكاليف مرتفعة بفضل شبكتنا وخبرتنا</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section" id="how">
+  <div class="section-tag">كيف نعمل</div>
+  <h2 class="section-title">ثلاث خطوات فقط —<br>وشركتك على طريق النمو الحقيقي</h2>
+
+  <div class="steps-container reveal">
+    <div class="step-card">
+      <span class="step-num">01</span>
+      <span class="step-icon">🔍</span>
+      <div class="step-title">جلسة تشخيص مجانية</div>
+      <div class="step-desc">نفهم شركتك وتحدياتها وأهدافها بعمق — جلسة صريحة بدون التزامات مسبقة.</div>
+    </div>
+    <div class="step-card">
+      <span class="step-num">02</span>
+      <span class="step-icon">📋</span>
+      <div class="step-title">خطة نمو مخصصة</div>
+      <div class="step-desc">ليست قالباً جاهزاً — بل خطة مصممة لشركتك أنت تحديداً بناءً على واقعك وسوقك وأهدافك.</div>
+    </div>
+    <div class="step-card">
+      <span class="step-num">03</span>
+      <span class="step-icon">🚀</span>
+      <div class="step-title">تنفيذ ومتابعة مستمرة</div>
+      <div class="step-desc">نسير معك خطوة بخطوة مع تقارير أداء فورية لتعرف بدقة أين أنت وإلى أين تتجه.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="cta-section" id="cta">
+  <!-- Fin background -->
+  <svg class="cta-bg-fin" viewBox="0 0 400 400" fill="none">
+    <path d="M50 380 C50 380, 120 320, 180 200 C220 120, 280 60, 280 60 C280 60, 260 130, 220 200 C180 270, 130 330, 50 380Z" fill="white"/>
+    <path d="M180 200 C220 120, 280 60, 280 60 C310 150, 280 260, 200 320 C200 320, 190 270, 180 200Z" fill="white"/>
+  </svg>
+
+  <div class="cta-inner">
+    <div class="section-tag" style="justify-content:center;">ابدأ الآن</div>
+    <h2 class="cta-title">شركتك تستحق أكثر<br>ونحن مستعدون<br>لنوصلك إلى <span>هناك</span></h2>
+    <p class="cta-sub">كل يوم يمر بدون قرار هو يوم تمنحه لمنافسيك. فريق ريد شارك مستعد للاستماع إليك وبناء خطة نمو حقيقية معك.</p>
+
+    <div class="cta-actions">
+      <a href="#" class="btn-primary" style="font-size:17px; padding:18px 40px;">
+        احجز استشارتك المجانية
+        <svg width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#" class="btn-whatsapp">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M17.6 6.4A8.5 8.5 0 0 0 3.9 17.1L3 21l4-1A8.5 8.5 0 0 0 21 12.5a8.5 8.5 0 0 0-3.4-6.1z" stroke="#25D366" stroke-width="1.5"/><path d="M9 10c0 .6.4 1.2.8 1.7.4.5 1.7 2 3.2 2.3.4.1.7 0 1-.2l.4-.6c.1-.3 0-.6-.2-.8l-.8-.5c-.2-.1-.5-.1-.7.1l-.3.3c-.1.1-.2.1-.3 0C11 12 10 11 9.9 10.8c-.1-.1-.1-.2 0-.3l.3-.3c.2-.2.2-.5.1-.7l-.5-.8c-.2-.2-.5-.3-.8-.2l-.6.4c-.2.3-.3.6-.2 1z" fill="#25D366"/></svg>
+        تواصل عبر واتساب
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="nav-logo">
+    <svg width="28" height="28" viewBox="0 0 40 40" fill="none">
+      <path d="M8 32 C8 32, 14 28, 20 16 C24 8, 28 6, 28 6 C28 6, 26 12, 22 18 C18 24, 14 28, 8 32Z" fill="#E8191A"/>
+      <path d="M20 16 C24 8, 28 6, 28 6 C30 14, 26 22, 20 28 C20 28, 20 22, 20 16Z" fill="#B01010"/>
+    </svg>
+    <span class="nav-logo-text" style="font-size:16px;">RED <span>SHARK</span></span>
+  </div>
+
+  <div class="footer-copy">© 2025 ريد شارك للنمو. جميع الحقوق محفوظة.</div>
+
+  <ul class="footer-links">
+    <li><a href="#">سياسة الخصوصية</a></li>
+    <li><a href="#">شروط الاستخدام</a></li>
+    <li><a href="#">تواصل معنا</a></li>
+  </ul>
+</footer>
+
+<script>
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, i * 100);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  reveals.forEach(el => observer.observe(el));
+
+  // Smooth active nav
+  const sections = document.querySelectorAll('section[id]');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.getAttribute('id');
+    });
+    document.querySelectorAll('.nav-links a').forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--white)' : '';
+    });
+  });
+</script>
+</body>
+</html>
